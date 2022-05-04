@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/updateEmp}" method="post">
+    <input type="hidden" name="id" th:value="${emp.getId()}">
+    <div class="form-group">
+        <label>Name</label>
+        <input th:value="${emp.getName()}" type="text" name="name"class="form-control" placeholder="孔浩名">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input th:value="${emp.getEmail()}" type="text" name="email" class="form-control" placeholder="2280701078@qq.com">
+    </div>
+    <div class="form-group">
+        <label>Department</label>
+        <select class="form-group" name="departmentId">
+            <option th:selected="${dept.getId()==emp.getDepartment().getId()}" th:each="dept:${depts}" th:text="${dept.getDept_name()}" th:value="${dept.getId()}"></option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">修改</button>
+</form>
+</body>
+<script>
+    document.getElementById("f1").onsubmit= function(){
+        printf();
+    }
+    function printf(){
+        alert("已修改");
+    }
+</script>
+</html>

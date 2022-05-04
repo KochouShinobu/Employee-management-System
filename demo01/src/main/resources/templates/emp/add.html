@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/addEmp}" method="post" id="f1">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name"class="form-control" placeholder="孔浩名">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="email" class="form-control" placeholder="2280701078@qq.com">
+    </div>
+    <div class="form-group">
+        <label>Department</label>
+        <select class="form-group" name="departmentId">
+            <option th:each="dept:${depts}" th:text="${dept.getDept_name()}" th:value="${dept.getId()}"></option>
+        </select>
+    </div>
+    <button  class="btn btn-primary">添加</button>
+</form>
+</body>
+<script>
+    document.getElementById("f1").onsubmit= function(){
+        printf();
+    }
+    function printf(){
+        alert("已添加");
+    }
+</script>
+</html>
